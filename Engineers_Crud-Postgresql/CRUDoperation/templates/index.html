@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        CRUD OPERATION WITH POSTGRESQL
+    </title>
+</head>
+<body>
+    <center>
+        <h1>
+            How to create crud operation with POSTGRESQL
+        </h1>
+        <h3>Django Web Tutorials</h3>
+        <hr/>
+        <a href="{% url 'insertEng' %}">Create New Engineer</a>
+        <table border= "1">
+            <tr>
+                <th>Engineer Id</th>
+                <th>Engineer Name</th>
+                
+            </tr>
+            {% for result in data%}
+            <tr>
+                <td>{{result.engineer_id}}</td>
+                <td>{{result.name}}</td>
+                <td><a href="Edit/{{result.engineer_id}}"/>Edit</a></td>
+                <td><a href="Delete{{result.engineer_id}}" onclick="return confirm('Are You Sure Want To Delete ? ')"/>Delete</a></td>
+            </tr>
+            {% endfor%}
+        </table>
+    </center>
+</body>
+</html>
