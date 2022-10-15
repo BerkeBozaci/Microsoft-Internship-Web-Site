@@ -81,8 +81,12 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': '20.213.240.221',
+        'HOST': '20.227.194.148',
         'PORT': '5432', 
+
+        #admin page:
+        #username: Beko
+        #password: 19972002Bb
 
     }
 }

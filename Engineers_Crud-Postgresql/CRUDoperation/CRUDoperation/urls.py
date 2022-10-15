@@ -17,11 +17,30 @@ from django.contrib import admin
 from django.urls import path
 from . import views 
 
+app_name = 'CRUDoperation'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.showEng, name="showEng"),
-    path('Insert', views.insertEng, name="insertEng"),
-    path('Edit/<int:id', views.Editeng, name="Editeng"),
-    path('Update/<int:id>', views.updateeng, name="updateeng"),
-    path('Delete/<int:id>', views.deleng, name="deleng"),
+   
+    path('edit/<int:engineer_id>', views.Editeng, name="Editeng"),
+    path('update/<int:engineer_id>', views.updateeng, name="updateeng"),
+    
+
+
+    path('', views.index, name = 'index'),
+    path('cadmin/landing/', views.adminView, name='adminView'),
+    path('cadmin/landing/<str:pk>/mips/', views.mipView, name='mipView'),
+    path('cadmin/landing/<str:pk>/mips/<str:lpk>/steps/', views.stepView, name='stepView'),
+    path('cadmin/landing/miplist/', views.mipList, name='mipList'),
+    path('cadmin/landing/pathlist/', views.pathList, name='pathList'),
+    path('cadmin/landing/edit/<int:engineer_id>', views.Editeng, name="Editeng"),
+    path('cadmin/landing/miplist/delMip/<str:pk>', views.delMip, name='delMip'),
+    path('cadmin/landing/miplist/delMip/', views.delMip, name='delMip'),
+    path('cadmin/landing/miplist/delMip', views.delMip, name='delMip'),
+    path('cadmin/landing/pathlist/delPath/<str:pk>', views.delPath, name='delPath'),
+    path('createEngineerLearningPath/<str:pk>',views.createEngLearningPath,name='createEngLearningPath'),
+    path('createEngineerLearningPath/<str:pk>',views.createEngLearningPath,name='createEngLearningPath'),
+    path('createEngineerLearningPathStep/<str:pk>',views.createEngineerLearningPathStep, name='createEngineerLearningPathStep'),
+    path('cadmin/landing/stepList/', views.stepList, name='steplist'),
+    path('cadmin/landing/stepList/delStep/<str:pk>', views.delStep, name='delStep'),
 ]

@@ -2,23 +2,41 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Engineer App</title>
+  <title>Engineer</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Engineer App</a>
+    <a class="navbar-brand" href="/cadmin/landing/">Back</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link right" href="/cadmin/landing/">Admin View <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
   </nav>
+
+    <div class="container">
+        <div class="row" style="float:center">
+            <div class="col-sm" style="float:center; width:30%">
+                <div class="col-auto">
+                    <div class="card card-body">
+                        <table class="table table-sm-responsive">
+                            <tr>
+                              <td>#Step#</td>
+                              <td>#Path Name#</td>
+                            </tr>
+                            {% for step in step_list %}
+                                <tr>
+                                  <td>{{step.name}}</td>
+                                  <td>{{step.learningpath.description}}</td>
+                                  <td><a class="btn btn-outline-danger btn-sm btn-block" href="delStep/{{step.lp_step_id}}"> Delete </a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
     
     
 

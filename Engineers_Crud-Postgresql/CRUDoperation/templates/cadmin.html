@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Engineer App</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/#">Home Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+    <div class="container">
+        <div class="row" style="float:center">
+            <div class="col-sm" style="float:center; width:30%">
+                <div class="col-auto">
+                    <div class="card card-body">
+                        <table class="table table-sm-responsive">
+                            <td style="color:#0000ff">Id</td>
+                            <td style="color:#0000ff">Name</td>
+                            {% for engineer in engineers %}
+                                <tr>
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <td>{{engineer.engineer_id}}</td>
+                                        <td>{{engineer.name}}</td>
+                                        <td><a class="btn btn-sm btn-info btn-sm btn-block"  href="edit/{{engineer.engineer_id}}" > Edit </a></td>
+                                        <td><button name="Engineer Delete" value={{engineer.engineer_id}} class="btn btn-outline-danger btn-sm btn-block">Delete</button></td>
+                                        <td><a name="Engineer Learning Paths" value={{engineer.engineer_id}} class="btn btn-outline-info btn-sm btn-block" href="/cadmin/landing/{{engineer.engineer_id}}/mips/">Progress</a></td>
+                                        <td><a class="btn btn-outline-info btn-sm btn-block" href="{% url 'createEngLearningPath' engineer.engineer_id %}">Learn</a></td>
+                                        
+                                    </form>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-s-6">
+                <div class="row">
+                
+                    <div class="card card-body" style="width:min-content">
+                        <td>Create Engineer</td>
+                        <table class="table table-sm-responsive" style="width:min-content">
+                            <tr>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <td><input type="text" name="Engineer Name" placeholder="Engineer Name"></td>
+                                    <td><button class="btn btn-outline-info btn-sm btn-block">Create</button></td></td>
+                                </form>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="card card-body" style="width:min-content">
+                        <td>Create Learning Path for Mip</td>
+                        <table class="table table-sm-responsive" style="width:min-content">
+                            <tr>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <td><input type="text" name="Path Name" placeholder="Path Name"></td>
+                                    <td><input type="number" name="PathMip ID" placeholder="Mip ID To Add To"></td>
+                                    <td><button class="btn btn-outline-info btn-sm btn-block">Create</button></td></td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td><a href="/cadmin/landing/pathlist/">See All Learning Paths</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="card card-body" style="width:min-content">
+                        <td>Create Learning Path Step for Paths</td>
+                        <table class="table table-sm-responsive" style="width:min-content">
+                            <tr>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <td><input type="text" name="Step Name" placeholder="Step Name"></td>
+                                    <td><input type="number" name="Path ID" placeholder="Path ID To Add To"></td>
+                                    <td><button class="btn btn-outline-info btn-sm btn-block">Create</button></td></td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td><a href="/cadmin/landing/stepList/">See All Steps</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+        
+
+
+
+                <div class="row">
+                    <div class="card card-body" style="width:min-content">
+                        <td>Create Mip</td>
+                        <table class="table table-sm-responsive" style="width:min-content">
+                            <tr>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <td><input type="text" name="Mip Name" placeholder="Mip Name"></td>
+                                    <td><button class="btn btn-outline-info btn-sm btn-block">Create</button></td></td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td><a href="/cadmin/landing/miplist/">See All Mips</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+  
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
